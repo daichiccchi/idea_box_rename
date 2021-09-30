@@ -8,8 +8,30 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255},
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
+  validates :user_area, presence: true, inclusion: { in: 1..47 }
+  validates :user_job, presence: true, inclusion: { in: 1..8 }
   has_secure_password
   validates :password, presence: true, length: {minimum: 6 } , allow_nil: true
+  
+    enum user_areas: {
+    北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
+    茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
+    新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
+    岐阜県:21,静岡県:22,愛知県:23,三重県:24,
+    滋賀県:25,京都府:26,大阪府:27,兵庫県:28,奈良県:29,和歌山県:30,
+    鳥取県:31,島根県:32,岡山県:33,広島県:34,山口県:35,
+    徳島県:36,香川県:37,愛媛県:38,高知県:39,
+    福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
+  }
+  
+  enum user_jobs: {
+    校長:1,教頭:2,主幹教諭:3,教諭:4,養護教諭:5,講師:6,学生:7,その他:8
+  }
+  
+    enum school_years: {
+    小１:1,小２:2,小３:3,小４:4,小５:5,小６:6,
+    中１:7,中２:8,中３:9,
+  }
   
   #渡された文字列のハッシュを返す
   def User.digest(string)

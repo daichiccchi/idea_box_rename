@@ -13,6 +13,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_no_difference 'User.count' do  # User.countでユーザー数が変わっていなければ（ユーザー生成失敗）true,変わっていればfalse
       post users_path, params: { user: { name:  "",           # signup_pathからusers_pathに対してpostリクエスト送信(/usersへ)、paramsでuserハッシュとその下のハッシュで値を受け取れるか確認
                                          email: "user@invalid",
+                                         user_area: 1,
+                                         user_job:  1,
+                                         school_year: 1,
                                          password:              "foo",
                                          password_confirmation: "bar" } }
     end
@@ -24,6 +27,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_difference "User.count", 1 do
       post users_path, params: { user: { name:  "Example User",
                                          email: "user@example.com",
+                                         user_area: 1,
+                                         user_job:  1,
+                                         school_year: 1,
                                          password:              "password",
                                          password_confirmation: "password" } }
     end

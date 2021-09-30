@@ -48,8 +48,10 @@ before_action :admin_user,     only: :destroy
   private
   
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                    :password_confirmation)
+      params.require(:user).permit(:name, :email, :user_area, :user_job,
+                                   :school_year,
+                                   :password,
+                                   :password_confirmation)
     end
     
     # ログイン済みユーザーかどうかを確認

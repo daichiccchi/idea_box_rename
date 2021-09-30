@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 2021_09_24_014610) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.integer "user_area"
+    t.integer "user_job"
+    t.integer "school_year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"

@@ -1,16 +1,25 @@
 <%= form_with(model: @user, local: true) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :name %>
+      <%= f.label :name, '名前' %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :email, 'メールアドレス' %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :user_area, '勤務地' %>
+      <%= f.select :user_area, User.user_areas { |p| [ p.name, p.id ] }, {prompt: '選択してください'}, class: 'form-control' %>
+
+      <%= f.label :user_job, '役職' %>
+      <%= f.select :user_job, User.user_jobs { |p| [ p.name, p.id ] }, {prompt: '選択してください'}, class: 'form-control' %>
+      
+       <%= f.label :school_year, '担当学年（任意）' %>
+       <%= f.select :school_year, User.school_years  { |p| [ p.name, p.id ] }, {prompt: '選択してください'}, class: 'form-control' %>
+
+      <%= f.label :password, 'パスワード' %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "パスワード（確認用）" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>

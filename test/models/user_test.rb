@@ -6,6 +6,7 @@ class UserTest < ActiveSupport::TestCase
   # end
   def setup
     @user = User.new(name: "Example User", email: "user@example.com",
+                     user_area: 1, user_job: 1, school_year: 1,
                      password: "foobar", password_confirmation: "foobar")
   end
   
@@ -35,9 +36,9 @@ class UserTest < ActiveSupport::TestCase
   
   test "email validation should accept valid addresses" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
-                         first.last@foo.jp alice+bob@baz.cn]                 #5つのアドレスを配列で指定
+                         first.last@foo.jp alice+bob@baz.cn]               #5つのアドレスを配列で指定
     valid_addresses.each do |valid_address|                                  #それぞれの要素をブロックvalid_addressに繰り返し代入。一個ずつ検証する。
-      @user.email = valid_address                                             #@user.emailにブロックを代入
+      @user.email = valid_address                                            #@user.emailにブロックを代入
       assert @user.valid?, "#{valid_address.inspect} should be valid"        #@userが通ったらtrue、通らなかったらfalse。さらに、第二引数でどのメールアドレスで失敗したかエラーメッセージを追加
     end
   end

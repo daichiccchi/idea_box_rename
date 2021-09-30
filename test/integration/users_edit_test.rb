@@ -14,10 +14,13 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_template 'users/edit'
     patch user_path(@user), params: { user: { name:  "",
                                               email: "foo@invalid",
+                                              user_area: nil,
+                                              user_job: nil,
+                                              school_year: nil,
                                               password:              "foo",
                                               password_confirmation: "bar" } }
     assert_template 'users/edit'
-    assert_select "div.alert", "The form contains 4 errors."
+    assert_select "div.alert", "The form contains 8 errors."
   end
   
   test "successful edit with friendly forwrding" do
@@ -29,6 +32,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
       email = "foo@bar.com"
       patch user_path(@user), params: { user: {name: name,
                                               email: email,
+                                              user_area: 5,
+                                              user_job: 4,
+                                              school_year: 2,
                                               password:              "",
                                               password_confirmation: "" } }
       assert_not flash.empty?
