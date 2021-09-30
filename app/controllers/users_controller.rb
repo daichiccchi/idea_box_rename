@@ -49,7 +49,7 @@ before_action :admin_user,     only: :destroy
   
     def user_params
       params.require(:user).permit(:name, :email, :user_area, :user_job,
-                                   :school_year,
+                                   :school_year, :avatar,
                                    :password,
                                    :password_confirmation)
     end

@@ -13,8 +13,8 @@
       <%= f.label :user_job, '役職' %>
       <%= f.select :user_job, User.user_jobs { |p| [ p.name, p.id ] }, {prompt: '選択してください'}, class: 'form-control' %>
       
-       <%= f.label :school_year, '担当学年（任意）' %>
-       <%= f.select :school_year, User.school_years  { |p| [ p.name, p.id ] }, {prompt: '選択してください'}, class: 'form-control' %>
+      <%= f.label :school_year, '担当学年（任意）' %>
+      <%= f.select :school_year, User.school_years  { |p| [ p.name, p.id ] }, {prompt: '選択してください'}, class: 'form-control' %>
 
       <%= f.label :password, 'パスワード' %>
       <%= f.password_field :password, class: 'form-control' %>
