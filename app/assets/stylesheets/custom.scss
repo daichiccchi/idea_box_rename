@@ -140,15 +140,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
 /* forms*/
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -199,4 +190,8 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+.avator{
+      height: 80px !important;
+      width: 80px !important;
 }

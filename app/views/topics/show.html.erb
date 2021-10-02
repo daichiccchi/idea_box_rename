@@ -1,0 +1,53 @@
+<div class="topic-index-wrapper">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="topic-index-single">
+            <h2 class="topic-author">
+              <%= @topic.user.name %>
+            </h2>
+            <%= image_tag @topic.image.url %>
+            <% if !@topic.favorite_users.include?(current_user) %>
+              <%= link_to favorites_path(topic_id: @topic.id), method: :post do %>
+                <%= image_tag 'heart-black.png', class: 'favorite-btn' %>
+              <% end %>
+            <% else %>
+               <%= link_to favorites_path(topic_id: @topic.id), method: :delete do %>
+              <%= image_tag 'heart-pink.png', class: 'favorite-btn' %>
+            <% end %>
+          <% end %>
+          <%= @topic.favorite_users.count %>
+            <%= image_tag 'comment.png', class: 'topic-index-icon' %>
+            <p class="topic-text">
+              <%= @topic.description %>
+            </p>
+            <ul class = 'users'>
+              <% @comments.each do |comment| %>
+                <li>
+                　 <% if @user.avatar? %>
+                     <%= image_tag @user.avatar.url, class: "avator" %>
+                   <% else %>
+                     <%= image_tag "noavatar.png", class: "avator" %>
+                   <% end %>
+                   <%= comment.user.name %>
+                   <%= comment.content %>
+                   <% if current_user?(@user) %>
+                     <%= link_to "削除", comment, method: :delete,
+                                            data: { confirm: "コメントを削除しますか?" } %>
+                   <% end %>
+                 </li>
+              <% end %>
+            </ul>  
+              <div class = 'form-group'>
+                <%= form_with url: comments_path, method: :post do |f| %>
+                <%= f.text_area :content, class: 'form-control', id:'content',
+                                        placeholder: "コメントを入力" %>
+                 <%= f.hidden_field :topic_id,:value => @topic.id %>
+                <%= f.submit "コメントする", class: "btn btn-primary" %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

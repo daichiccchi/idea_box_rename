@@ -10,6 +10,13 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
   
+  def show
+    @comment = Comment.new
+    @topic = Topic.find(params[:id])
+    @comments = @topic.comments
+    @user = User.find(params[:id])
+  end
+  
   def create
     @topic = current_user.topics.new(topic_params)
     if @topic.save
@@ -21,17 +28,27 @@ class TopicsController < ApplicationController
     end
   end
   
+  def destroy
+  end
+  
   private
   
   def topic_params
     params.require(:topic).permit(:image, :description)
   end
   
+  def user_params
+      params.require(:user).permit(:name, :email, :user_area, :user_job,
+                                   :school_year, :avatar,
+                                   :password,
+                                   :password_confirmation)
+  end
+  
    #ログイン済みユーザーかどうかを確認
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
+        flash[:danger] = "ログインしてください"
         redirect_to login_url
       end
     end
@@ -39,7 +56,7 @@ class TopicsController < ApplicationController
     #正しいユーザーかどうかを確認
     def correct_user
       @user = User.find(params[:id])
-      redirect_to (root_url) unless current_user?(@user)
+      redirect_to (root_url) unless correct_user?(@user)
     end
     
 end

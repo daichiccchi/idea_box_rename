@@ -14,6 +14,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6 } , allow_nil: true
   
   has_many :topics
+  has_many :favorites
+  has_many :comments
   
    mount_uploader :avatar, AvatarUploader
   

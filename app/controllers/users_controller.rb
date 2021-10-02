@@ -33,7 +33,7 @@ before_action :admin_user,     only: :destroy
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "プロフィールを変更しました"
       redirect_to @user
     else
       render 'edit'
@@ -42,7 +42,7 @@ before_action :admin_user,     only: :destroy
   
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "ユーザーを削除しました"
     redirect_to users_url
   end
   private
@@ -58,7 +58,7 @@ before_action :admin_user,     only: :destroy
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
+        flash[:danger] = "ログインしてください"
         redirect_to login_url
       end
     end
