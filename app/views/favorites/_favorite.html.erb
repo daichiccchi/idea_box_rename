@@ -1,0 +1,10 @@
+ <% if !topic.favorite_users.include?(current_user) %>
+    <%= link_to favorites_path(topic_id: topic.id), method: :POST, remote: true do  %>
+      <%= image_tag 'heart-black.png', class: 'favorite-btn' %>
+    <% end %>
+  <% else %>
+     <%= link_to favorites_path(topic_id: topic.id), method: :DELETE, remote: true do %>
+    <%= image_tag 'heart-pink.png', class: 'favorite-btn' %>
+  <% end %>
+<% end %>
+<%= topic.favorite_users.count %>
