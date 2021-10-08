@@ -35,3 +35,38 @@ User.create!(name:  "Example User",
                activated: true,
                activated_at: Time.zone.now)
   end
+  
+Label.create!(
+  [
+    {
+      name: '学級経営'
+    },
+    {
+      name: '国語'
+    },
+    {
+      name: '算数'
+    },
+    {
+      name: '理科'
+    },
+    {
+      name: '社会'
+    },
+    {
+      name: '外国語'
+    },
+    {
+      name: '音楽'
+    },
+    {
+      name: '図工'
+    },
+    {
+      name: '体育'
+    },
+    {
+      name: '道徳'
+    }
+  ]
+)

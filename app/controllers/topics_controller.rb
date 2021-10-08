@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   
   def index
     @topics = Topic.all
+    @topics = @topics.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
   end
   
   def new
@@ -33,7 +34,7 @@ class TopicsController < ApplicationController
   private
   
   def topic_params
-    params.require(:topic).permit(:image, :docment, :description)
+    params.require(:topic).permit(:image, :docment, :description,{ label_ids:[]})
   end
   
   def user_params

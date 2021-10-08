@@ -1,3 +1,11 @@
+<div class="#">
+  <%= form_with url: topics_path, method: :get, local: true do |form| %>
+  　<%= form.label :label, '絞り込む' %>
+    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+    <%= form.submit 'Search', name: nil %>
+  <% end %>
+</div>
+
 <div class="topic-index-wrapper">
   <div class="container">
     <% @topics.each do |topic| %>
