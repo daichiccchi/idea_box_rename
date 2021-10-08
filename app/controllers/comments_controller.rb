@@ -6,21 +6,17 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.topic_id = params[:topic_id]
     @comment.content = params[:content]
-    if @comment.save
-      flash[:success] = 'コメントしました'
-      redirect_to @comment.topic
-    else
-      @topic = Topic.find(params[:topic_id])
-      @comments = @topic.comments
-      render template: 'topics/show'
-    end
+    @topic = Topic.find(params[:topic_id])
+    @user = User.find(params[:user_id])
+    @comment.save
+    @comments = @topic.comments
   end
   
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    @comments = @topic.comments
     flash[:success] = 'コメントを削除しました'
-    redirect_to @comment.topic
   end
   
   private

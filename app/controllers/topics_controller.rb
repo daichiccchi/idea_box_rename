@@ -14,7 +14,7 @@ class TopicsController < ApplicationController
     @comment = Comment.new
     @topic = Topic.find(params[:id])
     @comments = @topic.comments
-    @user = User.find(params[:id])
+    @user = @topic.user
   end
   
   def create
@@ -23,7 +23,6 @@ class TopicsController < ApplicationController
       redirect_to topics_path 
       flash[:success] = '投稿が完了しました'
     else
-      flash[:danger]  = '投稿に失敗しました'
       render :new
     end
   end
@@ -34,7 +33,7 @@ class TopicsController < ApplicationController
   private
   
   def topic_params
-    params.require(:topic).permit(:image, :description)
+    params.require(:topic).permit(:image, :docment, :description)
   end
   
   def user_params

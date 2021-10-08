@@ -1,0 +1,29 @@
+  <%= @comments.count %>
+ <div class="collapse" id="collapseExample">
+ <ul class = 'users'>
+    <% comments.each do |comment| %>
+      <li>
+      　 <% if @user.avatar? %>
+           <%= image_tag @user.avatar.url, class: "avator" %>
+         <% else %>
+           <%= image_tag "noavatar.png", class: "avator" %>
+         <% end %>
+         <%= comment.user.name %>
+         <%= comment.content %>
+         <% if current_user?(@user) %>
+           <%= link_to "削除", comment, method: :delete,
+                                  data: { confirm: "コメントを削除しますか?" }, remote: true %>
+         <% end %>
+       </li>
+    <% end %>
+  </ul>  
+    <div class = 'form-group' id="js-comment-area">
+      <%= form_with url: comments_path, method: :post, remote: true, class: 'js-form' do |f| %>
+      <%= f.text_area :content, class: 'form-control', id:'content',
+                              placeholder: "コメントを入力" %>
+      <%= f.hidden_field :topic_id,:value => @topic.id %>
+      <%= f.hidden_field :user_id,:value => @user.id %>
+        <%= f.submit "コメントする", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
