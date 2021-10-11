@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_003747) do
+ActiveRecord::Schema.define(version: 2021_10_08_084036) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2021_10_08_003747) do
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "avatar"
+    t.string "reset_digest"
+    t.date "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

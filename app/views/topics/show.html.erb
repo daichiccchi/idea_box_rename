@@ -11,9 +11,8 @@
             <div id="favorites_buttons_<%= @topic.id %>">
               <%= render partial: 'favorites/favorite', locals: {topic: @topic} %>
             </div>
-            <div class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              <%= image_tag 'comment.png', class: 'topic-index-icon' %>
-              <%= @comments.count %>
+            <div id="comment_icon" class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <%= render partial: 'comments/icon', locals: { comments: @comments } %>
             </div>
             <p class="topic-text">
               <%= @topic.description %>

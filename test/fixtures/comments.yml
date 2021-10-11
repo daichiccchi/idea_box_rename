@@ -3,9 +3,7 @@
 one:
   user_id: 1
   topic_id: 1
-  text: MyString
 
 two:
   user_id: 1
   topic_id: 1
-  text: MyString

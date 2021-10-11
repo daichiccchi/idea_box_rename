@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   resources :labels
   get 'topics/new'
   root 'static_pages#home'
@@ -18,6 +20,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :topics
   resources :comments, only: [:create, :destroy]
-  
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
 end

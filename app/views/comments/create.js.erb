@@ -1,3 +1,4 @@
  $('#js-comment-area').html("<%= j(render 'comments/comment', {comments: @comments} ) %>");
+ $('#comment_icon').html("<%= j(render 'comments/icon', {comments: @comments} ) %>");
  $('.js-form')[0].reset();
  $('.more').trigger("click");
