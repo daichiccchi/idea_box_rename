@@ -1,23 +1,52 @@
-<div class="#">
-  <%= form_with url: topics_path, method: :get, local: true do |form| %>
-  　<%= form.label :label, '絞り込む' %>
-    <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
-    <%= form.submit 'Search', name: nil %>
-  <% end %>
-</div>
 
-<div class="topic-index-wrapper">
-  <div class="container">
-    <% @topics.each do |topic| %>
+<!--  <#%= form_with url: topics_path, method: :get, local: true do |form| %>-->
+<!--  <div class="form-inline">-->
+<!--    <#%= form.select(:label_ids, Label.all, :id, :name), class:"form-control mb-0 mr-2" %>-->
+<!--    <#%= form.submit 'Search', name: nil %>-->
+<!--  <#% end %>-->
+<!--</div>-->
+
+
+<div class="py-4 bg-light" >
+    <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="topic-index-single">
+        <% @topics.each do |topic| %>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow">
+            <div class="card-img-top">
               <%= link_to topic_path(id: topic.id), method: :get do %>
-                <%= image_tag topic.image.url %>
+                <%= image_tag topic.image.url, class: "card-img-top" %>
               <% end %>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="card-docment">
+                  <% unless topic.docment.blank? %>
+                    <i class="fas fa-paperclip"></i>
+                  <% end %>
+                 </div>
+                 <div>
+                   <i class="far fa-heart "></i>
+                   <%= topic.favorite_users.count %>
+                   <i class="far fa-comment"></i>
+                   <%= topic.comments.count %>
+                   <i class="far fa-bookmark"></i>
+                   <%= topic.submit_users.count %>
+                  </div>
+                </div>
+              <p class="card-text">
+                <%= topic.description.truncate(36, omission: '...and more...') %>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div> <small class="text-muted">9 mins</small>
+              </div>
+            </div>
           </div>
         </div>
+         <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+ </div>

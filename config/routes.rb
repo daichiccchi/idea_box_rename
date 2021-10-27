@@ -10,10 +10,14 @@ Rails.application.routes.draw do
   get  '/signup',  to: 'users#new'
   get  '/login',   to: 'sessions#new'
   get  '/favorites/index'
+  get 'topics/search'
+  get 'submits/index'
   post '/favorites', to: 'favorites#create'
   post '/login',   to: 'sessions#create'
+  post '/submits', to: 'submits#create'
   delete '/logout', to: 'sessions#destroy'
   delete '/favorites', to: 'favorites#destroy'
+  delete '/submits', to: 'submits#destroy'
   
   
   resources :users

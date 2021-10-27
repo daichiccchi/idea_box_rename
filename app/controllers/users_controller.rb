@@ -26,6 +26,11 @@ before_action :admin_user,     only: :destroy
     @users = User.where(activated: true).paginate(page: params[:page])
   end
   
+  def show
+    @user = User.find(params[:id])
+    @topics = @user.topics
+  end
+  
   def edit
     @user = User.find(params[:id])
   end

@@ -13,5 +13,7 @@ class Topic < ApplicationRecord
   has_many :comments
   has_many :labellings, dependent: :destroy
   has_many :labels, through: :labellings
+  has_many :submits
+  has_many :submit_users, through: :submits, source: 'user'
 
 end

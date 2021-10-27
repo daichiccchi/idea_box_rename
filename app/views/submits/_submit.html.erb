@@ -1,0 +1,10 @@
+<% if !topic.submit_users.include?(current_user) %>
+   <%= link_to submits_path(topic_id: topic.id), method: :post, remote: true do %>
+     <i class="far fa-bookmark fa-2x mt-2 ml-2 mb-2" style="color: black;"></i>
+   <% end %>
+ <% else %>
+   <%= link_to submits_path(topic_id: topic.id), method: :delete, remote: true do %>
+     <i class="fas fa-bookmark fa-2x mt-2 ml-2 mb-2" style="color: royalblue;"></i>
+  <% end %>
+<% end %>
+<%= topic.submit_users.count %>

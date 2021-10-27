@@ -1,22 +1,90 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sample App</title>
+    <title>Idea Box</title>
+      <script src="https://kit.fontawesome.com/339e8a6f83.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class= "center jumbotron">
-      <h1>Welcome to the Sample App</h1>
-      <h2>
-        This is the home page for the
-        <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-        sample application.
-      </h2>
-      
-        <%= link_to "Sign up now!", signup_path , class: "btn btn-lg btn-primary" %>
+    <div class="container" >
+    <div class="container mt-3 pt-3">
+      <div class="row">
+        <div class="col-md-6 my-5 text-lg-left text-center align-self-center">
+          <h1>ここはみんなの職員室。</h1>
+          <p class="lead">時間がない…そんな先生たちへ。<br>アイデアを共有して助け合おう</p>
+           <%= link_to "登録して始める", signup_path , class: "btn btn-lg btn-info" %>
+         
+        </div>
+        <div class="col-md-6"> 
+          <%= image_tag 'teacher-gb27559cba_1920.jpg', class: "img-fluid d-block mx-auto" %> 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="col-md-12 my-5">
+      <h2 class="sentence_info">IDEA BOXでできること </h2>
+      <hr />
+      </div>
+    </div>
+  <div class="py-1" >
+    <div class="second-container">
+      <div class="second-row">
+        <div class="p-4 col-lg-8">
+          <h3 class="mb-3 text-whit">写真の共有</h3>
+          <div class="blockquote text-muted">
+            <p class="mb-0">板書や掲示物など、を他の先生方に共有しましょう！<br>
+                            あなたの実践したことが誰かのヒントにきっとなる！<br>
+                            ※個人情報が特定されてしまう投稿はしないでください</p>
+            <div class="blockquote-footer">Someone famous in My memories</div>
+          </div>
+        </div>
+        <div class="col-md-4 align-self-center">
+          <img class="img-fluid d-block" src="#"> </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-1" >
+    <div class="second-container">
+      <div class="second-row">
+        <div class="p-4 col-lg-8">
+          <h3 class="mb-3 text-whit">ワークシートの添付</h3>
+          <div class="blockquote text-muted">
+            <p class="mb-0">作成した学習カードなどをワードやエクセル形式で共有。<br>
+                            簡単に保存できるので児童生徒の実態に合わせてアレンジできます。</p>
+            <div class="blockquote-footer">Someone famous in My memories</div>
+          </div>
+        </div>
+        <div class="col-md-4 align-self-center">
+          <img class="img-fluid d-block" src="#"> </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-1" >
+    <div class="second-container">
+      <div class="second-row">
+        <div class="p-4 col-lg-8">
+          <h3 class="mb-3 text-whit">匿名で登録できる！</h3>
+          <div class="blockquote text-muted">
+            <p class="mb-0">実名登録はハードルが高い…という方、ニックネームで登録できます！<br>
+                            多くの先生方に発信してもらうため、匿名登録可とさせていただきました。</p>
+            <div class="blockquote-footer">Someone famous in My memories</div>
+          </div>
+        </div>
+        <div class="col-md-4 align-self-center">
+          <img class="img-fluid d-block" src="#"> </div>
+      </div>
+    </div>
+  </div>
+     
     </div>
   
-        <%= link_to image_tag("rails.svg", alt: "Rails logo", width: "200px"),
+        <%#= link_to image_tag("rails.svg", alt: "Rails logo", width: "200px"),
                               "https://rubyonrails.org/" %>
+        
         <%#= link_to image_tag("kitten.jpg", alt: "cat img", width: "200px") %>
   </body>
 </html>
+
+ 

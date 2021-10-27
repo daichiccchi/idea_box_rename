@@ -21,6 +21,14 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.new(topic_params)
     if @topic.save
+      params[:label][:label_ids].each do |id|
+        if id !=nil
+          labelling = Labelling.new       #新しくラベルを生成
+          labelling.topic_id = @topic.id  #topicと紐づけ
+          labelling.label_id = id         #
+          labelling.save                  #topicと紐づけられたラベルを保存
+        end
+      end
       redirect_to topics_path 
       flash[:success] = '投稿が完了しました'
     else

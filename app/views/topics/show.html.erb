@@ -7,15 +7,28 @@
               <%= @topic.user.name %>
             </h2>
             <%= image_tag @topic.image.url %>
-            <a href="<%= @topic.docment %>">ファイルを開く</a>
-            <div id="favorites_buttons_<%= @topic.id %>">
-              <%= render partial: 'favorites/favorite', locals: {topic: @topic} %>
-            </div>
-            <div id="comment_icon" class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              <%= render partial: 'comments/icon', locals: { comments: @comments } %>
+            <!--ドキュメントファイルが投稿されていたらファイルを表示-->
+            <% unless @topic.docment.blank? %>
+              <i class="fas fa-paperclip ml-3"></i><a href="<%= @topic.docment %>">ファイルを開く<%= @topic.docment.file.filename %></a>
+            <% end %>
+            <div class="d-flex justify-content-end">
+              <div id="favorites_buttons_<%= @topic.id %>">
+                <%= render partial: 'favorites/favorite', locals: {topic: @topic} %>
+              </div>
+              <div id="comment_icon" class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <%= render partial: 'comments/icon', locals: { comments: @comments } %>
+              </div>
+              <div id="submits_buttons_<%= @topic.id %>">
+                <%= render partial: 'submits/submit', locals: {topic: @topic} %>
+              </div>
             </div>
             <p class="topic-text">
               <%= @topic.description %>
+            </p>
+            <p class="topic-text">
+              <% @topic.labels.each do |label| %>
+                <i class="fas fa-tag"></i><%= label.name %>
+              <% end %>
             </p>
             <ul class = 'users', id='js-comment-area'>
              <%= render partial: 'comments/comment', locals: { comments: @comments } %>
