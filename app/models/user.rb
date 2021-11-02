@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :comments
   has_many :submits
+   has_many :submit_topics, through: :submits, source: 'topic'
   
    mount_uploader :avatar, AvatarUploader
   

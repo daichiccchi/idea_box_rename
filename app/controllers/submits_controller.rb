@@ -22,8 +22,10 @@ class SubmitsController < ApplicationController
   end
   
  def destroy
-     Submit.find_by(user_id: current_user.id, topic_id: params[:topic_id]).destroy
-     @topic = Topic.find(params[:topic_id])
+     @submit = Submit.find_by(user_id: current_user.id, topic_id: params[:topic_id])
+     @submit.destroy
+     flash[:success] = "マイフォルダから削除しました"
+     redirect_to submits_index_path
  end
  
   private
@@ -34,6 +36,14 @@ class SubmitsController < ApplicationController
         flash[:danger] = "ログインしてください"
         redirect_to login_url
       end
+    end
+    
+  
+    def user_params
+      params.require(:user).permit(:name, :email, :user_area, :user_job,
+                                   :school_year, :avatar,
+                                   :password,
+                                   :password_confirmation)
     end
 
 end

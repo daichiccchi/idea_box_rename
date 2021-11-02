@@ -11,14 +11,15 @@ class SessionsController < ApplicationController
         params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       # remember user ←これを有効にするとチェックボックスのテストでエラーになる
         redirect_back_or @user
+        flash[:success] = 'ログインに成功しました'
       else
-        message  = "Account not activated."
-        message += "Check your email for the activation link."
+        message  = "こちらのアカウントは認証されていません"
+        message += "送信されたメールをご確認ください"
         flash[:danger] = message
         redirect_to root_url
       end
     else
-    flash.now[:danger] = 'Invalid email/password combination' #aエラーメッセージを作成
+    flash.now[:danger] = 'メールアドレスまたはパスワードが違います' #aエラーメッセージを作成
     render 'new'
     end
   end

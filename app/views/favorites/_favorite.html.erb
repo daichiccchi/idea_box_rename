@@ -1,10 +1,10 @@
  <% if !topic.favorite_users.include?(current_user) %>
     <%= link_to favorites_path(topic_id: topic.id), method: :POST, remote: true do  %>
-      <%= image_tag 'heart-black.png', class: 'favorite-btn' %>
+      <i class="far fa-heart  fa-2x mt-2 ml-2 mb-2" style="color: black;"></i>
     <% end %>
   <% else %>
-     <%= link_to favorites_path(topic_id: topic.id), method: :DELETE, remote: true do %>
-    <%= image_tag 'heart-pink.png', class: 'favorite-btn' %>
+    <%= link_to favorites_path(topic_id: topic.id), method: :DELETE, remote: true do %>
+      <i class="fas fa-heart  fa-2x mt-2 ml-2 mb-2" style="color: red;"></i>
+    <% end %>
   <% end %>
-<% end %>
 <%= topic.favorite_users.count %>

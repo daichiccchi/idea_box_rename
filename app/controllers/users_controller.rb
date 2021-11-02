@@ -15,7 +15,7 @@ before_action :admin_user,     only: :destroy
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email # アカウント有効化メールの送信
-      flash[:info] = "Please check your email to activate your account." # アカウント有効化メッセージの表示
+      flash[:info] = "送信されたメールからアカウントを認証してください" # アカウント有効化メッセージの表示
       redirect_to root_url # ホーム画面へリダイレクトする
     else
       render 'new'
@@ -23,7 +23,7 @@ before_action :admin_user,     only: :destroy
   end
   
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @users = User.all.page(params[:page]).per(20)
   end
   
   def show

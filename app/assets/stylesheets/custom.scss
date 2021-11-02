@@ -74,6 +74,11 @@
 //   font-size: 1.1em;
 //   line-height: 1.7em;
 // }
+ .topic-index-icon {
+      width: 35px;
+      height: 30px;
+      margin-left: 20px;
+    }
 
 
 // /* header */
@@ -289,9 +294,13 @@ a{
 }
 
 .py-5{
-   background-image: image-url('_staff_room_1.jpg');
+   background-image: image-url('234266.jpg');
+   background-position: right bottom;
    background-size: cover;
+   background-repeat: repeat;
+   background-attachment: fixed;
 }
+
 
 // .btn-primary {
 //     color: #fff;
@@ -303,3 +312,30 @@ a{
   padding-top: 100px;
 }
 
+
+// pagenateのデザイ
+.pagination>li>a {          
+  border: none;     
+  color: #696969;   
+}
+.page-item.active .page-link {
+  background-color: #33cccc;
+  border-color: #33cccc;
+}
+
+// /表示しているページ番号のデザイン
+.pagination>.active>a {     
+  border-radius: 15px;    
+}
+
+
+.pagination>li>a:hover {        
+  border-radius: 15px;   
+}
+
+.img-list {
+  object-fit: contain;
+  
+  width: 100%;
+  height: 100%;
+}

@@ -21,11 +21,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker',     '2.1.2'
-gem 'will_paginate', '3.1.8'
-gem 'bootstrap-will_paginate', '1.0.0'
+# gem 'will_paginate', '3.1.8'
+# gem 'will_paginate-bootstrap', '1.0.0'
 gem 'carrierwave'
 gem 'jquery-rails'
 gem 'ransack'
+gem 'kaminari'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
