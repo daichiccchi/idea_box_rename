@@ -22,10 +22,10 @@ class SubmitsController < ApplicationController
   end
   
  def destroy
-     @submit = Submit.find_by(user_id: current_user.id, topic_id: params[:topic_id])
-     @submit.destroy
-     flash[:success] = "マイフォルダから削除しました"
-     redirect_to submits_index_path
+     Submit.find_by(user_id: current_user.id, topic_id: params[:topic_id]).destroy
+     @topic = Topic.find(params[:topic_id])
+     #lash[:success] = "マイフォルダから削除しました"
+     #redirect_to submits_index_path
  end
  
   private

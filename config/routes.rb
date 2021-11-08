@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   resources :topics
   resources :comments, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :test_sessions, only: :create
 
 end

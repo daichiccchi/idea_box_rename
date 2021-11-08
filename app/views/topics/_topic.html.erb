@@ -1,0 +1,53 @@
+<div class="py-4 bg-light" >
+    <div class="container">
+      <div class="row">
+        <% @topics.each do |topic| %>
+        <div class="col-md-4 p-3">
+          <div class="card box-shadow">
+            <div class="card-img-top">
+              <%= link_to topic_path(id: topic.id), method: :get do %>
+                <% if topic.images.count > 0 %>
+                  <%= image_tag topic.images[0].url, class: "card-img-top" %>
+                <% else %>
+                  <%= image_tag "no_image.png", class: "card-img-top" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="card-docment">
+                  <% if topic.user.avatar? %>
+                    <%= image_tag user.avatar.url, size:"40x40" %>
+                  <% else %>
+                    <%= image_tag "noavatar.png", size:"40x40" %>
+                  <% end %>
+                  <%= link_to topic.user.name, topic.user %>
+                 </div>
+                 <div>
+                   <i class="far fa-heart "></i>
+                   <%= topic.favorite_users.count %>
+                   <i class="far fa-comment"></i>
+                   <%= topic.comments.count %>
+                   <i class="far fa-bookmark"></i>
+                   <%= topic.submit_users.count %>
+                  </div>
+                </div>
+              <p class="card-text">
+                <%= topic.description.truncate(36, omission: '...and more...') %>
+              </p>  
+               <p class="card-text">
+                <% unless topic.docment.blank? %>
+                    <i class="fas fa-paperclip"></i>
+                  <% end %>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                </div> <small class="text-muted"><%= topic.created_at.to_s(:datetime_jp) %></small>
+              </div>
+            </div>
+          </div>
+        </div>
+         <% end %>
+      </div>
+    </div>
+ </div>

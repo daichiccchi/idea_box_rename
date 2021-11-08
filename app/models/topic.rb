@@ -1,12 +1,12 @@
 class Topic < ApplicationRecord
   validates :user_id, presence: true
-  validates :image, presence: true
   validates :description, presence: true
   
   belongs_to :user
   
-  mount_uploader :image, ImageUploader
-  mount_uploader :docment, ImageUploader
+  mount_uploaders :images, ImageUploader
+  serialize :images, JSON #SQLiteを使用する場合は、この行を追加
+  mount_uploader :docment, FileUploader
   
   has_many :favorites
   # そのユーザーが保存したcデータをすべて取得することができる

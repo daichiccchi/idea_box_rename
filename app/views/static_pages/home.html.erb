@@ -12,6 +12,7 @@
           <h1>ここはみんなの<br>職員室。</h1>
           <p class="lead">時間がない…そんな先生たちへ。<br>アイデアを共有して助け合おう</p>
           <%= link_to "登録して始める", signup_path , class: "btn btn-lg btn-info" %>
+          <%= link_to "(企業の方へ)テストユーザーはこちら", test_sessions_path, method: :post , class: "btn btn-lg btn-warning mt-2" %>
         </div>
       </div>
     </div>
@@ -25,7 +26,7 @@
   <div class="py-1" >
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="string col-md-8">
           <h3 class="mb-3 text-whit">写真の共有</h3>
           <div class="blockquote text-muted">
             <p class="mb-0">板書や掲示物など、を他の先生方に共有しましょう！<br>
@@ -33,8 +34,11 @@
                             ※個人情報が特定されてしまう投稿はしないでください</p>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="slide col-md-4">
           <%= image_tag '234266.jpg', class: "img-fluid d-block mx-auto" %>
+          <%= image_tag '167_3629_0_img.jpeg', class: "img-fluid d-block mx-auto" %>
+          <%= image_tag '167_3630_0_img.jpeg', class: "img-fluid d-block mx-auto" %>
+          <%= image_tag '11038011706.jpg', class: "img-fluid d-block mx-auto" %>
         </div>
       </div>
     </div>
@@ -43,7 +47,7 @@
   <div class="py-1" >
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="string col-md-8">
           <h3 class="mb-3 text-whit">ワークシートの添付</h3>
           <div class="blockquote text-muted">
             <p class="mb-0">作成した学習カードなどをワードやエクセル形式で共有。<br>
@@ -58,9 +62,9 @@
   </div>
   
   <div class="py-1" >
-    <div class="second-container">
-      <div class="second-row">
-        <div class="p-4 col-lg-8">
+    <div class="container">
+      <div class="row">
+        <div class="string col-md-8">
           <h3 class="mb-3 text-whit">匿名で登録できる！</h3>
           <div class="blockquote text-muted">
             <p class="mb-0">実名登録はハードルが高い…という方、ニックネームで登録できます！<br>
@@ -76,7 +80,51 @@
      
     </div>
   
+ <script>
+ 
+// 'use strict';
+// {
+//   const target = document.getElementsByClassName("string")
+  
+//   function callback(a){
+//     console.log(a)
+  
+//     if (a.isIntersecting){
+//       target[0].classList.add('appear')
    
+//     }
+//   }
+  
+//   const options = {
+//     threhold: 0.6,
+//   }
+//   const observer = new IntersectionObserver(callback, options)
+//   console.log(target)
+//   observer.observe(target[0])
+// }
+// window.addEventListener('Load', function (){
+//   console.log('hoge');
+//     debugger;
+//   viewSlide('.slide img');
+// });
+// function viewSlide(className, slideNo = -1)
+// {
+//   let imgArray = document.querySelectorAll(className);
+//   if (slideNo >= 0){
+//     // 初回以外は現在のスライドを消す
+//     imgArray[slideNo].style.opacity = 0;
+//   }
+  
+//   slideNo++;
+//   if (slideNo >= imgArray.length) {
+//     slideNo = 0;
+//   }
+//   imgArray[slideNo].style.opacity = 1;
+//   setTimeOut(function(){viewSlide(className, 1000);}
+   
+// }
+
+ </script>
   </body>
 </html>
 
