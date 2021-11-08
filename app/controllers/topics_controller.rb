@@ -42,7 +42,9 @@ class TopicsController < ApplicationController
   private
   
   def topic_params
-    params.require(:topic).permit(:image, :docment, :description,{ label_ids:[]})
+    params.require(:topic).permit({images: []}, :docment, :description,{ label_ids:[]},)                                                                                                
+   
+
   end
   
   def user_params

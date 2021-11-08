@@ -1,60 +1,8 @@
-
-<!--  <#%= form_with url: topics_path, method: :get, local: true do |form| %>-->
-<!--  <div class="form-inline">-->
-<!--    <#%= form.select(:label_ids, Label.all, :id, :name), class:"form-control mb-0 mr-2" %>-->
-<!--    <#%= form.submit 'Search', name: nil %>-->
-<!--  <#% end %>-->
-<!--</div>-->
-
-
-<div class="py-4 bg-light" >
-    <div class="container">
-      <div class="row">
-        <% @topics.each do |topic| %>
-        <div class="col-md-4 p-3">
-          <div class="card box-shadow">
-            <div class="card-img-top">
-              <%= link_to topic_path(id: topic.id), method: :get do %>
-                <%= image_tag topic.image.url, class: "card-img-top" %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="card-docment">
-                  <% if topic.user.avatar? %>
-                    <%= image_tag user.avatar.url, size:"40x40" %>
-                  <% else %>
-                    <%= image_tag "noavatar.png", size:"40x40" %>
-                  <% end %>
-                  <%= link_to topic.user.name, topic.user %>
-                 </div>
-                 <div>
-                   <i class="far fa-heart "></i>
-                   <%= topic.favorite_users.count %>
-                   <i class="far fa-comment"></i>
-                   <%= topic.comments.count %>
-                   <i class="far fa-bookmark"></i>
-                   <%= topic.submit_users.count %>
-                  </div>
-                </div>
-              <p class="card-text">
-                <%= topic.description.truncate(36, omission: '...and more...') %>
-              </p>  
-               <p class="card-text">
-                <% unless topic.docment.blank? %>
-                    <i class="fas fa-paperclip"></i>
-                  <% end %>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div> <small class="text-muted"><%= topic.created_at.to_s(:datetime_jp) %></small>
-              </div>
-            </div>
-          </div>
-        </div>
-         <% end %>
-      </div>
+<div class='main'>
+  <div class='item-contents'>
+    <div class="item-container">
+      <h3 class="subtitle">投稿画像一覧</h3>
     </div>
- </div>
+  </div>
+</div>
+<%= render partial: 'topics/topic' %>

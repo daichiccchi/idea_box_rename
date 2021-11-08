@@ -2,7 +2,34 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3 ">
-        <%= image_tag @topic.image.url, class: "img-list" %>
+         <div id="carouselExampleIndicators" data-interval="false" class="carousel slide" data-ride="carousel">
+           <div class="carousel-inner">
+             <div class="carousel-item active">
+               <% if @topic.images.count > 0 %>
+                 <%= image_tag @topic.images[0].url, class: "img-list" %>
+               <% else %>
+                 <%= image_tag "no_image.png",class: "img-list" %>
+               <% end %>
+             </div>
+             <div class="carousel-item">
+               <% if @topic.images.count > 0 %>
+                 <%  @topic.images[1..-1].each do |image| %>
+                   <%= image_tag image.url, class: "img-list" %>
+                 <% end %>
+               <% else %>
+                 <%= image_tag "no_image.png",class: "img-list" %>
+               <% end %>
+             </div>
+             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+               <span aria-hidden="true"><i class="fas fa-arrow-alt-circle-left fa-2x" style="color: #33cccc;"></i></span>
+               <span class="sr-only">Previous</span>
+             </a>
+             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+               <span aria-hidden="true"><i class="fas fa-arrow-alt-circle-right fa-2x" style="color: #33cccc;"></i></span>
+               <span class="sr-only">Next</span>
+             </a> 
+           </div>
+         </div>
       </div>
       <div class="col-md-6">
         <div class="card">
@@ -22,7 +49,7 @@
             <p>
                <!--ドキュメントファイルが投稿されていたらファイルを表示-->
               <% unless @topic.docment.blank? %>
-                <i class="fas fa-paperclip ml-3"></i><a href="<%= @topic.docment %>">ファイルを開く<%= @topic.docment.file.filename %></a>
+                <i class="fas fa-paperclip ml-3"></i><a href="<%= @topic.docment %>"><%= @topic.docment.file.filename %></a>
               <% end %>
                <% @topic.labels.each do |label| %>
                 <i class="fas fa-tag"></i><%= label.name %>
