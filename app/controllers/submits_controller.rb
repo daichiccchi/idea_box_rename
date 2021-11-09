@@ -22,10 +22,18 @@ class SubmitsController < ApplicationController
   end
   
  def destroy
-     Submit.find_by(user_id: current_user.id, topic_id: params[:topic_id]).destroy
-     @topic = Topic.find(params[:topic_id])
-     #lash[:success] = "マイフォルダから削除しました"
-     #redirect_to submits_index_path
+   if params[:button] == "garbage"
+       #submit_indexのごみ箱のボタンを実行したとき
+       Submit.find_by(user_id: current_user.id, topic_id: params[:topic_id]).destroy
+       @topic = Topic.find(params[:topic_id])
+       flash[:success] = "マイフォルダから削除しました"
+       redirect_to submits_index_path
+   else
+       Submit.find_by(user_id: current_user.id, topic_id: params[:topic_id]).destroy
+       @topic = Topic.find(params[:topic_id])
+       #lash[:success] = "マイフォルダから削除しました"
+       #redirect_to submits_index_path
+   end
  end
  
   private

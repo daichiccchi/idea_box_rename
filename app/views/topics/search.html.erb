@@ -3,9 +3,9 @@
     <div class="item-container">
       <ul class='item-lists'>
         <% if @q.description_cont != nil %>
-          <h3 class="subtitle"><%= "#{@q.description_cont} の検索結果" %></h3>
+          <h3 class="subtitle"><%= "#{Label.find(@q.labels_id_eq).name}「#{@q.description_cont}」 の検索結果 #{@topics.count}件" %></h3>
         <% else %>
-          <h3 class="subtitle"><%= "検索結果" %></h3>
+          <h3 class="subtitle"><%= "指定条件なし　検索結果" %></h3>
      　 </ul>
         <% end %>
     </div>

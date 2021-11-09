@@ -56,7 +56,8 @@ before_action :admin_user,     only: :destroy
       params.require(:user).permit(:name, :email, :user_area, :user_job,
                                    :school_year, :avatar,
                                    :password,
-                                   :password_confirmation)
+                                   :password_confirmation,
+                                   :profile)
     end
     
     # ログイン済みユーザーかどうかを確認

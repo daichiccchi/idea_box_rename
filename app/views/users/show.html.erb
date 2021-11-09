@@ -1,58 +1,32 @@
 <%= provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-9">
+  <aside class="col-md-12">
     <section class="user_info">
         <div class="card-body">
           <div class="row">
-            <div class="col">
+            <div class="col-md-3">
           <% if @user.avatar? %>
             <%= image_tag @user.avatar.url, size: "200x200" %>
           <% else %>
             <%= image_tag "noavatar.png", size: "200x200" %>
           <% end %>
             </div>
-             <div class="col">
-            <h5 class="card-title"><b> <%= @user.name %></b></h5>
-            <h6 class="card-subtitle my-2 text-muted"><%= User.user_areas.key @user.user_area %></h6>
-            <p class="card-text">ユーザーのプロフィール文</p>
+             <div class="col-md-4">
+            <h5 class="card-title"><b>お名前<%= @user.name %></b></h5>
+            <h6 class="card-subtitle my-2 text-muted">勤務地：<%= User.user_areas.key @user.user_area %></h6>
+            <h6 class="card-subtitle my-2 text-muted">担当学年：<%= User.school_years.key @user.school_year %></h6>
             <a href="#" class="card-link">マイフォルダ</a>
             <a href="#" class="card-link">Another link</a>
+            </div>
+            <div class="col">
+               <h5 class="card-title">自己紹介</h5>
+               <p class="cardtext">
+                 <%= @user.profile %>
+               </p>
             </div>
           </div>
         </div>
     </section>
   <aside>
 </div>
-
-
-
-<div class="py-4 bg-light" >
-    <div class="container">
-      <div class="row">
-        <% @topics.each do |topic| %>
-        <div class="col-md-4 p-3">
-          <div class="card box-shadow">
-            <div class="card-img-top">
-              <%= link_to topic_path(id: topic.id), method: :get do %>
-                <% if topic.images.count > 0 %>
-                  <%= image_tag topic.images[0].url, class: "card-img-top" %>
-                <% else %>
-                  <%= image_tag "no_image.png", class: "card-img-top" %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <p class="card-text">
-                <%= topic.description.truncate(36, omission: '...and more...') %>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                </div> <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-         <% end %>
-      </div>
-    </div>
- </div>
+<%= render partial: 'topics/topic' %>

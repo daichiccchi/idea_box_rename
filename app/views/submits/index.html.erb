@@ -2,16 +2,20 @@
 
   
   <div class="container">
+    <!--9行目のeach文の外で書かないとコードが複雑になってしまう-->
+     <% if @submit_topics.count == 0 %>
+        <h4>マイフォルダは空です</h4>
+      <% end %>
      <% @submit_topics.each do |topic| %>
 　　<div class="border" style="padding:10px;">
     <div class="row">
       <div class="col-md-3">
         <%= link_to topic_path(id: topic.id), method: :get do %>
-          <% if topic.images.count > 0 %>
-            <%= image_tag topic.images[0].url, class: "img-list" %>
-          <% else %>
-            <%= image_tag "no_image.png", class: "img-list" %>
-          <% end %>
+            <% if topic.images.count > 0 %>
+              <%= image_tag topic.images[0].url, class: "img-list" %>
+            <% else %>
+              <%= image_tag "no_image.png", class: "img-list" %>
+            <% end %>
         <% end %>
         </div>
           <div class="col-md-7">
@@ -31,7 +35,8 @@
           </p>
           </div>
           <div class="col-md-2 text-right">
-            <%= link_to submits_path(topic_id: topic.id), method: :delete do %>
+            <!--garbageというparamsを与えてdestroyアクション内で処理を条件分岐させる-->
+            <%= link_to submits_path(topic_id: topic.id, button: "garbage"), method: :delete do %>
               <i class="far fa-trash-alt fa-2x"></i>
             <% end %>
           </div>
