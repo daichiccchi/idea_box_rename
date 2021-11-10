@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_234312) do
+ActiveRecord::Schema.define(version: 2021_11_09_022113) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -80,6 +80,21 @@ ActiveRecord::Schema.define(version: 2021_11_08_234312) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "yearings", force: :cascade do |t|
+    t.integer "topic_id", null: false
+    t.integer "year_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_yearings_on_topic_id"
+    t.index ["year_id"], name: "index_yearings_on_year_id"
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.string "year_number"
+  end
+
   add_foreign_key "labellings", "labels"
   add_foreign_key "labellings", "topics"
+  add_foreign_key "yearings", "topics"
+  add_foreign_key "yearings", "years"
 end

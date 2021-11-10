@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_action :correct_user,   only: [:edit, :update] #上に同じく、　　　　　　　　　　　　　　corre_userメソッドを与える
   
   def index
-    @topics = Topic.all
+    @topics = Topic.all.order(created_at: :desc) 
     @topics = @topics.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
   end
   
@@ -21,14 +21,15 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.new(topic_params)
     if @topic.save
-      params[:label][:label_ids].each do |id|
-        if id !=nil
-          labelling = Labelling.new       #新しくラベルを生成
-          labelling.topic_id = @topic.id  #topicと紐づけ
-          labelling.label_id = id         #
-          labelling.save                  #topicと紐づけられたラベルを保存
-        end
-      end
+      labelling = Labelling.new       #新しくラベルを生成
+      labelling.topic_id = @topic.id  #topicと紐づけ
+      labelling.label_id = params[:topic][:label_ids] #topicと紐づけられたラベルを保存        
+      labelling.save 
+      
+      yearing = Yearing.new       #新しく学年を生成
+      yearing.topic_id = @topic.id  #topicと紐づけ
+      yearing.year_id = params[:topic][:year_ids] #topicと紐づけられたラベルを保存        
+      yearing.save  
       redirect_to topics_path 
       flash[:success] = '投稿が完了しました'
     else
@@ -42,7 +43,7 @@ class TopicsController < ApplicationController
   private
   
   def topic_params
-    params.require(:topic).permit({images: []}, :docment, :description,{ label_ids:[]},)                                                                                                
+    params.require(:topic).permit( :docment, :description, {images: []}, { label_ids:[]}, { year_ids:[]})                                                                                                
    
 
   end

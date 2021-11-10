@@ -73,8 +73,10 @@
     
         <%= search_form_for @q, url: topics_search_path, class:"form-inline" do |f| %>
          <div class="form-inline">
-            <%#= select "label_id", Label.all.collect { |p| [ p.name, p.id ] }, include_blank: "選択してください", class:"form-control mb-0 mr-2" %>
-            <%= f.select :labels_id_eq, options_from_collection_for_select(Label.all, :id, :name ), include_blank: "タグから探す", class:"form-control mb-0 mr-2" %>
+            <%= f.select :years_id_eq, options_from_collection_for_select(Year.all, :id, :year_number ), include_blank: "学年から探す", class:"form-control mb-0 mr-2" %>
+         </div>
+         <div class="form-inline">
+            <%= f.select :labels_id_eq, options_from_collection_for_select(Label.all, :id, :name ), include_blank: "教科から探す", class:"form-control mb-0 mr-2" %>
         </div>
           <%= f.search_field :description_cont, placeholder: 'キーワードから探す', class:'form-control mb-0' %>
           <%= f.button type: "submit", class:"btn btn-info" do%>

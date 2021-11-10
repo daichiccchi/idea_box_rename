@@ -10,7 +10,7 @@
 
 # メインのサンプルユーザーを1人作成する
 User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
+             email: "example@rails.org",
              user_area: 1,
              user_job: 4,
              school_year: 3,
@@ -68,5 +68,37 @@ Label.create!(
     {
       name: '道徳'
     }
+  ]
+)
+
+Year.create!(
+  [
+    {
+      year_number: '小１'
+    },
+    {
+      year_number: '小２'
+    },
+    {
+      year_number: '小３'
+    },
+    {
+      year_number: '小４'
+    },
+    {
+      year_number: '小５'
+    },
+    {
+      year_number: '小６'
+    },
+    {
+      year_number: '中１'
+    },
+    {
+      year_number: '中２'
+    },
+    {
+      year_number: '中３'
+    },
   ]
 )

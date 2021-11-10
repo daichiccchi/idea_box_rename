@@ -14,6 +14,8 @@ class Topic < ApplicationRecord
   has_many :comments
   has_many :labellings, dependent: :destroy
   has_many :labels, through: :labellings
+  has_many :yearings, dependent: :destroy
+  has_many :years, through: :yearings
   has_many :submits
   # そのユーザーが保存したTopicデータをすべて取得することができる
   has_many :submit_users, through: :submits, source: 'user'

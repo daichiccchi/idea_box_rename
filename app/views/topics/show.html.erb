@@ -12,22 +12,22 @@
                <% end %>
              </div>
              <div class="carousel-item">
-               <% if @topic.images.count > 0 %>
+               <% if @topic.images.count >= 2 %>
                  <%  @topic.images[1..-1].each do |image| %>
                    <%= image_tag image.url, class: "img-list" %>
                  <% end %>
-               <% else %>
-                 <%= image_tag "no_image.png",class: "img-list" %>
                <% end %>
              </div>
-             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-               <span aria-hidden="true"><i class="fas fa-arrow-alt-circle-left fa-2x" style="color: #33cccc;"></i></span>
-               <span class="sr-only">Previous</span>
-             </a>
-             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-               <span aria-hidden="true"><i class="fas fa-arrow-alt-circle-right fa-2x" style="color: #33cccc;"></i></span>
-               <span class="sr-only">Next</span>
-             </a> 
+             <% if @topic.images.count >= 2 %>
+               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                 <span aria-hidden="true"><i class="fas fa-arrow-alt-circle-left fa-2x" style="color: #33cccc;"></i></span>
+                 <span class="sr-only">Previous</span>
+               </a>
+               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                 <span aria-hidden="true"><i class="fas fa-arrow-alt-circle-right fa-2x" style="color: #33cccc;"></i></span>
+                 <span class="sr-only">Next</span>
+               </a> 
+             <% end %>
            </div>
          </div>
       </div>
@@ -51,8 +51,11 @@
               <% unless @topic.docment.blank? %>
                 <i class="fas fa-paperclip ml-3"></i><a href="<%= @topic.docment %>"><%= @topic.docment.file.filename %></a>
               <% end %>
+               <% @topic.years.each do |year| %>
+                 <i class="fas fa-tag"></i><%= year.year_number %>
+               <% end %>
                <% @topic.labels.each do |label| %>
-                <i class="fas fa-tag"></i><%= label.name %>
+                 <i class="fas fa-tag"></i><%= label.name %>
               <% end %>
             </p>
             <p>

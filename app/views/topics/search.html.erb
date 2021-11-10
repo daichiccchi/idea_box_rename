@@ -2,7 +2,11 @@
   <div class='item-contents'>
     <div class="item-container">
       <ul class='item-lists'>
-        <% if @q.description_cont != nil %>
+        <% if @q.years_id_eq != nil && @q.labels_id_eq != nil && @q.description_cont != nil %>
+          <h3 class="subtitle"><%= "#{Year.find(@q.years_id_eq).year_number} #{Label.find(@q.labels_id_eq).name}「#{@q.description_cont}」 の検索結果 #{@topics.count}件" %></h3>
+        <% elsif @q.years_id_eq == nil && @q.labels_id_eq != nil && @q.description_cont != nil %>
+          <h3 class="subtitle"><%= "#{Label.find(@q.labels_id_eq).name}「#{@q.description_cont}」 の検索結果 #{@topics.count}件" %></h3>
+        <% elsif @q.years_id_eq != nil && @q.labels_id_eq == nil && @q.description_cont != nil %>
           <h3 class="subtitle"><%= "#{Label.find(@q.labels_id_eq).name}「#{@q.description_cont}」 の検索結果 #{@topics.count}件" %></h3>
         <% else %>
           <h3 class="subtitle"><%= "指定条件なし　検索結果" %></h3>

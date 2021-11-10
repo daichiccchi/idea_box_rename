@@ -28,7 +28,7 @@ before_action :admin_user,     only: :destroy
   
   def show
     @user = User.find(params[:id])
-    @topics = @user.topics
+    @topics = @user.topics.order(created_at: :desc) 
   end
   
   def edit
