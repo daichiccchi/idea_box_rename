@@ -10,17 +10,18 @@
         <div class="flex-row">
          </div>
          　 <div class="form-group">
-           　  <%= f.label :image,"写真" %>
+           　  <%= f.label :image,"画像をアップロード" %>
             　<span class="image">
                 <%#= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
                 <% @topic.images.each do |image| %>
                   <%= hidden_field :topic, :images, multiple: true, value: image.identifier %>
                 <% end %>
-                <%= f.file_field :images, multiple: true %>
+                 <%= f.file_field :images, multiple: true %>
+              
               </span>
              </div> 
              <div class="form-group">
-                <%= f.label :docment, "word,excel,pdfなど" %>
+                <%= f.label :docment, "word,excel,pdfなどのファイル" %>
              <span class="docment">
                <%= f.file_field :docment, accept: "docment/docx,docment/xlsx,docment/pdf" %>
              </span>
@@ -36,7 +37,7 @@
             <% end %>
           </div>
           <div class="form-group">
-            <%= f.label :description, "本文" %>
+            <%= f.label :description, "本文　(1行目の20文字は見出しとして表示されます)" %>
             <%= f.text_area :description, class: 'form-control' %>
           </div>
 

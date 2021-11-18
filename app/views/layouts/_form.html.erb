@@ -25,16 +25,16 @@
       
       <%= f.label :profile, "自己紹介" %>
       <%= f.text_area :profile, class: 'form-control' %>
-      
+      <label>アイコン</label>
       <div class="gravatar_edit">
       <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url, size: "200x200" %>
+        <%= image_tag @user.avatar.url, class: "rounded-circle", size: "200x200" %>
       <% else %>
-        <%= image_tag "noavatar.png", size: "200x200"%>
+        <%= image_tag "noavatar.png", class: "rounded-circle", size: "200x200"%>
       <% end %>
  　　 <%= f.file_field :avatar, id: "file-sample" %>
     　</div>
-    　<img id="file-preview" width="150" height="150" style="border:none;" >
+    　<img class="rounded-circle" id="file-preview" width="200" height="200" style="border:none;" >
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
     <% end %>
     

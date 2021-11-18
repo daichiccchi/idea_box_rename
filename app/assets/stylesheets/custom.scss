@@ -340,6 +340,11 @@ a{
   width: 100%;
   height: 100%;
 }
+.carousel-item {
+  object-fit: contain;
+  width: 100%;
+  height: 360px;
+}
 
 .slide {
 	position:relative;
@@ -352,12 +357,21 @@ a{
 	object-fit:contain;
 }
 
+// 複数枚画像がアップロードされていた時の右下のアイコン
 .card-img-top {
   width: 100%;
   height: 250px;
   object-fit: contain;
 }
+.card-img-top p {
+    position: absolute;
+    bottom: 125px;
+    right: 5px;
+}
 
+.rounded-circle {
+  object-fit: cover;
+}
 // .string{
 //   opacity: 0;
 //   transform: translateY(20px);
@@ -369,5 +383,4 @@ a{
 //   opacity: 1;
 //   transform: translateY(0);
 // }
-
 

@@ -4,26 +4,37 @@
       <div class="col-md-6 col-md-offset-3 ">
          <div id="carouselExampleIndicators" data-interval="false" class="carousel slide" data-ride="carousel">
            <div class="carousel-inner">
-             <div class="carousel-item active">
+             <div>
                <% if @topic.images.count > 0 %>
-                 <%= image_tag @topic.images[0].url, class: "img-list" %>
+                 <% if @topic.images[0].file.content_type.include?('image/') %>
+                   <%= image_tag @topic.images[0].url, class: "carousel-item active" %>
+                 <% else %>
+                   <%= video_tag @topic.images[0].url, class: "carousel-item active",
+                                                       controls: true, autobuffer: true %>
+                 <% end %>
                <% else %>
-                 <%= image_tag "no_image.png",class: "img-list" %>
+                 <%= image_tag "no_image.png",class: "carousel-item active" %>
                <% end %>
-             </div>
-             <div class="carousel-item">
-               <% if @topic.images.count >= 2 %>
+        
+               <% if @topic.images.length >= 2 %>
                  <%  @topic.images[1..-1].each do |image| %>
-                   <%= image_tag image.url, class: "img-list" %>
+                   <% if image.file.content_type.include?('image/') %>
+                     <%= image_tag image.url, class: "carousel-item" %>
+                   <% else %>
+                     <%= video_tag image.url, class: "carousel-item active",
+                                                         controls: true, autobuffer: true %>
+                   <% end %>
+                   <!--ここでcarousel-itemクラスを指定しないと3枚以上のときおかしくなる-->
+                   <!--同じdivで囲まないとスクロールされない-->
                  <% end %>
                <% end %>
              </div>
-             <% if @topic.images.count >= 2 %>
-               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+             <% if @topic.images.length >= 2 %>
+               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="height:10%; top:160px;">
                  <span aria-hidden="true"><i class="fas fa-arrow-alt-circle-left fa-2x" style="color: #33cccc;"></i></span>
                  <span class="sr-only">Previous</span>
                </a>
-               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="height:10%; top:160px;">
                  <span aria-hidden="true"><i class="fas fa-arrow-alt-circle-right fa-2x" style="color: #33cccc;"></i></span>
                  <span class="sr-only">Next</span>
                </a> 
@@ -35,16 +46,17 @@
         <div class="card">
           <div class="card-header">
             <% if @topic.user.avatar? %>
-              <%= image_tag user.avatar.url, size:"50x50" %>
+              <%= image_tag @topic.user.avatar.url, class: "rounded-circle", size:"50x50" %>
             <% else %>
-              <%= image_tag "noavatar.png", size:"50x50" %>
+              <%= image_tag "noavatar.png", class: "rounded-circle", size:"50x50" %>
             <% end %>
             <%= @topic.user.name %>
           </div>
           <div class="card-body">
             <p class="topic-text">
               <!--トピックの説明文-->
-              <%= @topic.description %>
+              <%= auto_link(simple_format(@topic.description)) %>
+              <!--auto_linkとsimple_formatを組み合わせてリンクとして表示-->
             </p>
             <p>
                <!--ドキュメントファイルが投稿されていたらファイルを表示-->

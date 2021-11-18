@@ -4,21 +4,33 @@
       <div class="collapse" id="collapseExample">
         <ul class = 'users pl-0'>
           <% comments.each do |comment| %>
-          <li>
-        　   <% if @user.avatar? %>
-              <%= image_tag @user.avatar.url,  size:"50x50" %>
-            <% else %>
-              <%= image_tag "noavatar.png",  size:"50x50" %>
+          <div class="d-flex flex-row bd-highlight mb-3">
+            <div class="p-2 bd-highlight">
+              <% if @topic.user.avatar? %>
+                <%= image_tag @topic.user.avatar.url, class: "rounded-circle",  size:"50x50" %>
+              <% else %>
+                <%= image_tag "noavatar.png", class: "rounded-circle", size:"50x50" %>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= link_to comment.user.name, comment.user %>
+              <% if @topic.user == comment.user %>
+                  （投稿者）
+              <% end %>
+              <br>
+              <%= comment.content %>
+              <div style="position: absolute; bottom: 0px; right: 0px; ">
+                <% if current_user?(comment.user) %>
+                  <%= link_to comment_path(comment),
+                                      data: { confirm: "コメントを削除しますか?" }, remote: true, method: :delete do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
             <% end %>
-            <%= comment.user.name %>
-            <%= comment.content %>
-            <% if current_user?(comment.user) %>
-              <%= link_to "削除", comment, method: :delete,
-                                    data: { confirm: "コメントを削除しますか?" }, remote: true %>
-            <% end %>
-          </li>
-            <% end %>
-          </ul>    
+        </ul>    
               
           <div class = 'form-group' id="js-comment-area">
             <%= form_with url: comments_path, method: :post, remote: true, class: 'js-form' do |f| %>

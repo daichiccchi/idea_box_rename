@@ -12,7 +12,14 @@
       <div class="col-md-3">
         <%= link_to topic_path(id: topic.id), method: :get do %>
             <% if topic.images.count > 0 %>
-              <%= image_tag topic.images[0].url, class: "img-list" %>
+               <% if topic.images[0].file.content_type.include?('image/') %>
+                 <%= image_tag topic.images[0].url, class: "img-list" %>
+               <% else %>
+                 <div class="img-list">
+                   <%= video_tag topic.images[0].url, class: "img-list", poster_skip_pipeline: true %>
+                   <%= image_tag "movie_video_icon.png", class: "img-list", style: "position: absolute; left:0;" %>
+                 </div>
+               <% end %>
             <% else %>
               <%= image_tag "no_image.png", class: "img-list" %>
             <% end %>

@@ -17,13 +17,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     '/tmp/projectname-cache' 
   end 
   #ファイルの拡張子を指定
-  def  extension_allowlist 
-     %w(jpg jpeg gif png)
-  end 
-  
-  def content_type_allowlist
-    /image\//
+  def extension_whitelist
+    %w(jpg jpeg gif png mp4)
   end
+  
+
   
   def content_type_denylist
     ['application/text', 'application/json']

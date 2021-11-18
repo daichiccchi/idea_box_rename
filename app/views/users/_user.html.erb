@@ -1,16 +1,14 @@
 <li>
   <% if user.avatar? %>
-    <%= image_tag user.avatar.url, size:"80x80" %>
+    <%= image_tag user.avatar.url, class: "rounded-circle", size:"80x80" %>
   <% else %>
-    <%= image_tag "noavatar.png", size:"80x80" %>
+    <%= image_tag "noavatar.png", class: "rounded-circle", size:"80x80" %>
   <% end %>
   <%= link_to user.name, user %>
-  <div class="inline-block">
     勤務地：<%= User.user_areas.key user.user_area %>
     担当学年：<%= User.school_years.key user.school_year %>
     <% if current_user.admin? && !current_user?(user) %>
       | <%= link_to "delete", user, method: :delete,
                                             data: { confirm: "ユーザーを削除しますか?" } %>
     <% end %>
-  </div>
 </li>
