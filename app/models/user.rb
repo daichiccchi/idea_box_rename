@@ -9,7 +9,8 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   validates :user_area, presence: true, inclusion: { in: 1..47 }
-  validates :user_job, presence: true, inclusion: { in: 1..8 }
+  # validates :user_job, inclusion: { in: 1..8 }
+  validates :school_year, presence: true
   has_secure_password
   validates :password, presence: true, length: {minimum: 6 } , allow_nil: true
   

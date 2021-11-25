@@ -1,5 +1,9 @@
-Hi <%= @user.name %>,
+IDEA BOXへようこそ！
+こんにちは、<%= @user.name %>さん。
+登録フォームを入力していただき、ありがとうございます。
+※まだ登録は完了していません。
 
-Welcome to the Sample App! Click on the link below to activate your account:
+以下のボタンを押して、アカウント認証を行ってください。
+その後、ログインできるようになります。
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

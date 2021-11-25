@@ -1,8 +1,14 @@
-<h1>Sample App</h1>
-<p>Hi <%= @user.name %>,</p>
+<h1>IDEA BOXへようこそ</h1>
+<p>こんにちは、<%= @user.name %>さん。<br>
+   登録フォームを入力していただき、ありがとうございます。<br>
+   ※まだ登録は完了していません。
+</p>
 <p>
-Welcome to the Sample App! Click on the link below to activate your account:
+以下のボタンを押して、アカウント認証を行ってください。<br>
+その後、ログインできるようになります。
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+<div class="btn btn-lg btn-info">
+<%= link_to "アカウントを認証する", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
+</div>

@@ -10,7 +10,8 @@
         <div class="flex-row">
          </div>
          　 <div class="form-group">
-           　  <%= f.label :image,"画像をアップロード" %>
+           　  <%= f.label :images,"画像または動画(jpg jpeg gif png mp4)のファイル" %>
+            　<p>*複数枚選択する場合は<strong>Ctrlキー</strong>を押しながら選択してください。</p>
             　<span class="image">
                 <%#= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
                 <% @topic.images.each do |image| %>

@@ -16,5 +16,9 @@ module SampleApp
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.time_zone = 'Tokyo'
+    # デフォルトのロケールを:en以外に変更する
+    config.i18n.default_locale = :ja
+    # I18nライブラリに訳文の探索場所を指示する
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
   end
 end

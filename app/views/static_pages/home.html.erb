@@ -10,7 +10,7 @@
       <div class="row">
         <div class="bg-white p-5 col-10 mx-auto mx-md-0 col-lg-6">
           <h1>ほしいアイデアが<br>きっとある。</h1>
-          <p class="lead">時間がない…そんな先生たちへ。<br>アイデアを共有して助け合おう</p>
+          <p class="lead">時間がない…そんな先生たちへ。<br>アイデアを共有して定時で帰ろう。</p>
           <%= link_to "登録して始める", signup_path , class: "btn btn-lg btn-info" %>
           <%= link_to "(企業の方へ)テストユーザーはこちら", test_sessions_path, method: :post , class: "btn btn-lg btn-warning mt-2" %>
         </div>
@@ -19,7 +19,7 @@
   </div>
   
   <div class="col-md-12 my-5">
-      <h2 class="sentence_info">IDEA BOXでできること </h2>
+      <h2 class="sentence_info">IDEA BOXの特長</h2>
       <hr />
       </div>
     </div>
@@ -27,18 +27,16 @@
     <div class="container">
       <div class="row">
         <div class="string col-md-8">
-          <h3 class="mb-3 text-whit">写真の共有</h3>
+          <h3 class="mb-3 text-whit">写真、動画の投稿</h3>
           <div class="blockquote text-muted">
             <p class="mb-0">板書や掲示物など、を他の先生方に共有しましょう！<br>
-                            あなたの実践したことが誰かのヒントにきっとなる！<br>
-                            ※個人情報が特定されてしまう投稿はしないでください</p>
+                            あなたの実践したことが誰かのヒントにきっとなります！<br>
+                            1つの投稿で複数枚投稿できます。</p>
+            <div class="blockquote-footer">※個人情報が特定されてしまう投稿はご遠慮ください</div>
           </div>
         </div>
         <div class="slide col-md-4">
-          <%= image_tag '234266.jpg', class: "img-fluid d-block mx-auto" %>
-          <%= image_tag '167_3629_0_img.jpeg', class: "img-fluid d-block mx-auto" %>
-          <%= image_tag '167_3630_0_img.jpeg', class: "img-fluid d-block mx-auto" %>
-          <%= image_tag '11038011706.jpg', class: "img-fluid d-block mx-auto" %>
+          <%= image_tag 'home_image.png', class: "img-fluid d-block mx-auto" %>
         </div>
       </div>
     </div>
@@ -48,7 +46,7 @@
     <div class="container">
       <div class="row">
         <div class="string col-md-8">
-          <h3 class="mb-3 text-whit">ワークシートの添付</h3>
+          <h3 class="mb-3 text-whit">ワークシートや指導案の添付</h3>
           <div class="blockquote text-muted">
             <p class="mb-0">作成した学習カードなどをワードやエクセル形式で共有。<br>
                             簡単に保存できるので児童生徒の実態に合わせてアレンジできます。</p>
@@ -65,15 +63,16 @@
     <div class="container">
       <div class="row">
         <div class="string col-md-8">
-          <h3 class="mb-3 text-whit">匿名で登録できる！</h3>
+          <h3 class="mb-3 text-whit">ニックネームで簡単登録！</h3>
           <div class="blockquote text-muted">
-            <p class="mb-0">実名登録はハードルが高い…という方、ニックネームで登録できます！<br>
-                            多くの先生方に発信してもらうため、匿名登録可とさせていただきました。</p>
-            <div class="blockquote-footer">Someone famous in My memories</div>
+            <p class="mb-0">面倒な本人確認も必要ありません！<br>
+                            メールアドレスや勤務地、担当学年を入力するだけで<br>
+                            簡単に登録できます。</p>
           </div>
         </div>
-        <div class="col-md-4 align-self-center">
-          <img class="img-fluid d-block" src="#"> </div>
+        <div class="col-md-4">
+           <%= image_tag 'home_image3.png', class: "img-fluid d-block mx-auto" %>
+        </div>
       </div>
     </div>
   </div>
@@ -81,49 +80,28 @@
     </div>
   
  <script>
- 
-// 'use strict';
-// {
-//   const target = document.getElementsByClassName("string")
+  function showElementAnimation() {
+    var element = document.getElementsByClassName('img-fluid');
+    if(!element) return;
   
-//   function callback(a){
-//     console.log(a)
+    var showTiming = window.innerHeight > 768 ? 200 : 40;// 要素が出てくるタイミングはここで調整
+    var scrollY = window.pageYOffset;
+    var windowH = window.innerHeight;
+    
+    for (var i=0;i<element.length;i++) {
+      var elemClientRect = element[i].getBoundingClientRect();
+      var elemY = scrollY + elemClientRect.top;
+      if(scrollY + windowH - showTiming > elemY) {
+        element[i].classList.add('is-show');
+      } else if (scrollY + windowH < elemY) {
+        // 上にスクロールして再度非表示にする場合はこちらを記述
+        element[i].classList.remove('is-show');
+      }
+    }
+  }
+  showElementAnimation();
+  window.addEventListener('scroll', showElementAnimation);
   
-//     if (a.isIntersecting){
-//       target[0].classList.add('appear')
-   
-//     }
-//   }
-  
-//   const options = {
-//     threhold: 0.6,
-//   }
-//   const observer = new IntersectionObserver(callback, options)
-//   console.log(target)
-//   observer.observe(target[0])
-// }
-// window.addEventListener('Load', function (){
-//   console.log('hoge');
-//     debugger;
-//   viewSlide('.slide img');
-// });
-// function viewSlide(className, slideNo = -1)
-// {
-//   let imgArray = document.querySelectorAll(className);
-//   if (slideNo >= 0){
-//     // 初回以外は現在のスライドを消す
-//     imgArray[slideNo].style.opacity = 0;
-//   }
-  
-//   slideNo++;
-//   if (slideNo >= imgArray.length) {
-//     slideNo = 0;
-//   }
-//   imgArray[slideNo].style.opacity = 1;
-//   setTimeOut(function(){viewSlide(className, 1000);}
-   
-// }
-
  </script>
   </body>
 </html>

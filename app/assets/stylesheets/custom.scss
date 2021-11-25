@@ -384,3 +384,14 @@ a{
 //   transform: translateY(0);
 // }
 
+.img-fluid {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px);
+  transition: all 1s;
+}
+.img-fluid.is-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+}

@@ -55,7 +55,7 @@
           <div class="card-body">
             <p class="topic-text">
               <!--トピックの説明文-->
-              <%= auto_link(simple_format(@topic.description)) %>
+              <%= auto_link(simple_format(@topic.description), html: {target: '_blank', rel: "noopener noreferrer"}) %>
               <!--auto_linkとsimple_formatを組み合わせてリンクとして表示-->
             </p>
             <p>

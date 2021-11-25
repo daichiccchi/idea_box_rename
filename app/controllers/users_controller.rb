@@ -26,9 +26,10 @@ before_action :admin_user,     only: :destroy
     @users = User.all.page(params[:page]).per(20)
   end
   
-  def show
+  def show #ユーザーの詳細ページ
     @user = User.find(params[:id])
     @topics = @user.topics.order(created_at: :desc) 
+    @user_show = true #パーシャルの条件分岐で使用
   end
   
   def edit

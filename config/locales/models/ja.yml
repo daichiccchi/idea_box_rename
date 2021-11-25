@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        user_area: 勤務地
+        user_job: 役職
+        school_year: 学年
+        password: パスワード
+      topic:
+        images: "画像または動画(jpg jpeg gif png mp4)のファイル="
+        docment: "word,excel,pdfなどのファイル="
+        description: 本文
+  errors:
+    messages:
+      extension_whitelist_error: "%{extension}ファイルのアップロードは許可されていません。"

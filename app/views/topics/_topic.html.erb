@@ -33,12 +33,19 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="card-docment">
-                  <% if topic.user.avatar? %>
-                    <%= image_tag topic.user.avatar.url, class: "rounded-circle", size:"40x40" %>
-                  <% else %>
-                    <%= image_tag "noavatar.png", class: "rounded-circle", size:"40x40" %>
+                  <% if @user_show && topic.user.id == current_user.id %> 
+                    <%= link_to topic_path(topic_id: topic.id), method: :delete do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  <% elsif @user_show && topic.user.id == @user.id %> 
+                  <% else %> 
+                    <% if topic.user.avatar? %>
+                      <%= image_tag topic.user.avatar.url, class: "rounded-circle", size:"40x40" %>
+                    <% else %>
+                      <%= image_tag "noavatar.png", class: "rounded-circle", size:"40x40" %>
+                    <% end %>
+                    <%= link_to topic.user.name.truncate(9, omission: '...'), topic.user %>
                   <% end %>
-                  <%= link_to topic.user.name, topic.user %>
                  </div>
                  <div>
                    <i class="far fa-heart"></i>
@@ -52,13 +59,13 @@
               <p class="card-text">
                 <%= topic.description.truncate(20, omission: '...') %>
               </p>  
-               <p class="card-text">
-                <% unless topic.docment.blank? %>
-                    <i class="fas fa-paperclip"></i>
-                  <% end %>
-              </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+                  <p class="card-text">
+                    <% unless topic.docment.blank? %>
+                        <i class="fas fa-paperclip"></i>
+                      <% end %>
+                  </p>
                 </div> <small class="text-muted"><%= topic.created_at.to_s(:datetime_jp) %></small>
               </div>
             </div>

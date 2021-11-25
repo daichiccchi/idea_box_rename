@@ -1,4 +1,7 @@
 <%= provide(:title, @user.name) %>
+<% if current_page?(current_user) %>
+  <h2 class="mt-2">マイページ</h2>
+<% end %>
 <div class="row">
   <aside class="col-md-12">
     <section class="user_info">
@@ -15,8 +18,14 @@
             <h5 class="card-title"><b><%= @user.name %></b></h5>
             <h6 class="card-subtitle my-2 text-muted">勤務地：<%= User.user_areas.key @user.user_area %></h6>
             <h6 class="card-subtitle my-2 text-muted">担当学年：<%= User.school_years.key @user.school_year %></h6>
-            <a href="#" class="card-link">マイフォルダ</a>
-            <a href="#" class="card-link">Another link</a>
+            <% if current_page?(current_user) %>
+              <%= link_to submits_index_path, class: "btn btn-dark", method: :get do %>
+                <i class="fas fa-folder-open"></i>マイフォルダ
+              <% end %>
+              <%= link_to edit_user_path(current_user),class: "btn btn-dark", method: :get do %>
+                <i class="fas fa-cog"></i> 設定
+              <% end %>
+            <% end %>
             </div>
             <div class="col">
                <h5 class="card-title">自己紹介</h5>
@@ -29,56 +38,8 @@
     </section>
   <aside>
 </div>
-<div class="py-4 bg-light" >
-    <div class="container">
-      <div class="row">
-        <% @topics.each do |topic| %>
-        <div class="col-md-4 p-3">
-          <div class="card box-shadow">
-            <div class="card-img-top">
-              <%= link_to topic_path(id: topic.id), method: :get do %>
-                <% if topic.images.count == 1 %>
-                  <%= image_tag topic.images[0].url, class: "card-img-top" %>
-                <% elsif topic.images.count >= 2 %>
-                  <div class="card-img-top">
-                    <%= image_tag topic.images[0].url, class: "card-img-top" %>
-                    <P><i class="fas fa-images fa-1.5x" style="color: white; "></i></P>
-                  </div>
-                <% else %>
-                  <%= image_tag "no_image.png", class: "card-img-top" %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="card-docment">
-                
-                 </div>
-                 <div>
-                   <i class="far fa-heart "></i>
-                   <%= topic.favorite_users.count %>
-                   <i class="far fa-comment"></i>
-                   <%= topic.comments.count %>
-                   <i class="far fa-bookmark"></i>
-                   <%= topic.submit_users.count %>
-                  </div>
-                </div>
-              <p class="card-text">
-                <%= topic.description.truncate(36, omission: '...and more...') %>
-              </p>  
-               <p class="card-text">
-                <% unless topic.docment.blank? %>
-                    <i class="fas fa-paperclip"></i>
-                  <% end %>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                </div> <small class="text-muted"><%= topic.created_at.to_s(:datetime_jp) %></small>
-              </div>
-            </div>
-          </div>
-        </div>
-         <% end %>
-      </div>
-    </div>
- </div>
+<% if @user.topics.count > 0 %>
+  <%= render partial: 'topics/topic' %>
+<% else %>
+  <%= "#{@user.name}さんの投稿はまだありません" %>
+<% end %>
