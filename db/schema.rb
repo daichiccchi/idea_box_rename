@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_022113) do
     t.datetime "activated_at"
     t.string "avatar"
     t.string "reset_digest"
-    t.date "reset_sent_at"
+    t.datetime "reset_sent_at"
     t.string "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
