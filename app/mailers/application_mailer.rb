@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'IDEA BOX'
+  default from: 'ideabox82787@gmail.com'
   layout 'mailer'
 end
