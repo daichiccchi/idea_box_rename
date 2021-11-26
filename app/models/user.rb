@@ -3,7 +3,7 @@ class User < ApplicationRecord
   before_save { email.downcase! }
   before_create :create_activation_digest
   # =before_save {self.email = email.downcase}
-  validates :name, presence: true, length: {maximum: 50}
+  validates :name, presence: true, length: {maximum: 20}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum: 255},
                     format: { with: VALID_EMAIL_REGEX },
@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :comments
   has_many :submits
-   has_many :submit_topics, through: :submits, source: 'topic'
+  has_many :submit_topics, through: :submits, source: 'topic'
   
    mount_uploader :avatar, AvatarUploader
   

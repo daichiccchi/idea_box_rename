@@ -33,11 +33,11 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="card-docment">
-                  <% if @user_show && topic.user.id == current_user.id %> 
+                  <% if action_name == 'show' && topic.user.id == current_user.id %> 
                     <%= link_to topic_path(topic_id: topic.id), method: :delete do %>
                       <i class="far fa-trash-alt"></i>
                     <% end %>
-                  <% elsif @user_show && topic.user.id == @user.id %> 
+                  <% elsif action_name == 'show' && topic.user.id == @user.id %> 
                   <% else %> 
                     <% if topic.user.avatar? %>
                       <%= image_tag topic.user.avatar.url, class: "rounded-circle", size:"40x40" %>

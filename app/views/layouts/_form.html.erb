@@ -4,10 +4,12 @@
 
       <%= f.label :name, '名前　*必須' %>
       <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :email, 'メールアドレス　*必須' %>
-      <%= f.email_field :email, class: 'form-control' %>
-
+      
+      <% if action_name == 'new' %>
+        <%= f.label :email, 'メールアドレス　*必須' %>
+        <%= f.email_field :email, class: 'form-control' %>
+      <% end %>
+      
       <%= f.label :user_area, '勤務地　*必須' %>
       <%= f.select :user_area, User.user_areas { |p| [ p.name, p.id ] }, {prompt: '選択してください'}, class: 'form-control' %>
 
@@ -16,12 +18,14 @@
       
       <%= f.label :school_year, '担当学年　*必須' %>
       <%= f.select :school_year, User.school_years  { |p| [ p.name, p.id ] }, {prompt: '選択してください'}, class: 'form-control' %>
-
-      <%= f.label :password, 'パスワード *必須' %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "パスワード（確認用）" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      
+      <% if action_name == 'new' %>
+        <%= f.label :password, 'パスワード *必須' %>
+        <%= f.password_field :password, class: 'form-control' %>
+  
+        <%= f.label :password_confirmation, "パスワード（確認用）" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <% end %>
       
       <%= f.label :profile, "自己紹介" %>
       <%= f.text_area :profile, class: 'form-control' %>

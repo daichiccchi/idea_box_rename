@@ -5,7 +5,6 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.all.order(created_at: :desc) 
     @topics = @topics.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
-    @user_show = false #パーシャルの条件分岐で使用
   end
   
   def new

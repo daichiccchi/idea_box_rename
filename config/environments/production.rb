@@ -70,11 +70,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address:              'ideabox82787@gmail.com',
+  address:              'smtp.gmail.com', # <======= 送信メールサーバーのアドレスを入れる
   port:                 587,
   domain:               'gmail.com',
-  user_name:            Rails.application.credentials.gmail[:user_name],
-  password:             Rails.application.credentials.gmail[:password],
+  user_name:             ENV['GMAIL_USER_NAME'],
+  password:              ENV['GMAIL_PASSWORD'],
   authentication:       'plain',
   enable_starttls_auto: true }
   # ActionMailer::Base.smtp_settings = {
