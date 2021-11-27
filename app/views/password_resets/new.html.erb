@@ -1,6 +1,6 @@
-<% provide(:title, "Forgot password") %>
-<h1>パスワード再発行</h1>
-
+<% provide(:title, "パスワードを忘れた方はこちら") %>
+<h1>パスワード再設定のリンクを送信</h1>
+<h4>有効なメールアドレスを入力してください</h4>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(url: password_resets_path, scope: :password_reset,
@@ -8,7 +8,7 @@
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= f.submit "再設定のリンクを送信", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
