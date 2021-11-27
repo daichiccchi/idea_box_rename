@@ -13,7 +13,7 @@ class PasswordResetsController < ApplicationController
       flash[:info] = "送信されたメールからパスワードを再発行してください"
       redirect_to root_url
     else
-      flash.now[:danger] = "Email  not found"
+      flash.now[:danger] = "メールアドレスが正しくありません"
       render 'new'
     end
   end
@@ -27,7 +27,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @user.update_attribute(:reset_digest, nil)
       log_in @user
-      flash[:success] = "Password has been reset."
+      flash[:success] = "新しくパスワードを設定しました"
       redirect_to @user
     else
       render 'edit'
