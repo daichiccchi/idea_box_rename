@@ -51,6 +51,26 @@
               </li>
             </ul>
           </li>
+          <li>
+            <a class="inline-block ml-3" id="search" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-search"></i>
+            </a>
+          </li>
+          </ul>
+          <div class="collapse" id="collapseExample">
+            <%= search_form_for @q, url: topics_search_path, class:"form-inline" do |f| %>
+             <div class="form-inline">
+                <%= f.select :years_id_eq, options_from_collection_for_select(Year.all, :id, :year_number ), include_blank: "学年から探す", class:"form-control mb-0 mr-2" %>
+             </div>
+             <div class="form-inline">
+                <%= f.select :labels_id_eq, options_from_collection_for_select(Label.all, :id, :name ), include_blank: "教科から探す", class:"form-control mb-0 mr-2" %>
+            </div>
+              <%= f.search_field :description_cont, placeholder: 'キーワードから探す', class:'form-control mb-0' %>
+              <%= f.button type: "submit", class:"btn btn-info" do%>
+                <i class="fas fa-search"></i>
+              <% end %>
+            <% end %>
+          </div>
  
         <% else %>
           <li class="inline-block"><%= link_to "ログインはこちら", login_path %></li>
@@ -61,18 +81,6 @@
       </ul>
     
     
-        <%= search_form_for @q, url: topics_search_path, class:"form-inline" do |f| %>
-         <div class="form-inline">
-            <%= f.select :years_id_eq, options_from_collection_for_select(Year.all, :id, :year_number ), include_blank: "学年から探す", class:"form-control mb-0 mr-2" %>
-         </div>
-         <div class="form-inline">
-            <%= f.select :labels_id_eq, options_from_collection_for_select(Label.all, :id, :name ), include_blank: "教科から探す", class:"form-control mb-0 mr-2" %>
-        </div>
-          <%= f.search_field :description_cont, placeholder: 'キーワードから探す', class:'form-control mb-0' %>
-          <%= f.button type: "submit", class:"btn btn-info" do%>
-            <i class="fas fa-search"></i>
-          <% end %>
-        <% end %>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

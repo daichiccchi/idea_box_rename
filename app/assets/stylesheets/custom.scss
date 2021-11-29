@@ -112,7 +112,7 @@
 
 
 #q_labels_id_eq, #q_years_id_eq{
-    eight: calc(1.5em + 0.75rem + 2px);
+    height: calc(1.5em + 0.75rem + 2px);
     padding: 0.375rem 0.75rem;
     margin-right: 10px;
     margin-bottom: 0;
@@ -294,12 +294,43 @@ a{
     margin-right: 3.5rem;
 }
 
-.py-5{
+.text-center{
    background-image: image-url('234266.jpg');
    background-position: right bottom;
    background-size: cover;
    background-repeat: repeat;
    background-attachment: fixed;
+   padding: 3rem;
+}
+
+.bg-white{
+  padding: 3rem;
+}
+
+@media only screen and (max-width:599px) {
+  .text-center{
+    background-image: image-url('234266.jpg');
+    background-position: right bottom;
+    padding: 1rem;
+    .bg-white{
+      padding: 1rem;
+      h1{
+        font-size: 1.8rem;
+      }
+      p{
+        font-size: 1rem;
+      }
+      .btn{
+        font-size: 1.25rem;
+      }
+    }
+  }
+  .form-control{
+    width: auto;
+  }
+  .search{
+    display: none;
+  }
 }
 
 
