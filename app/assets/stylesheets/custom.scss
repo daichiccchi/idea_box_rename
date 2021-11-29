@@ -314,7 +314,7 @@ a{
 }
 
 @media only screen and (max-width:599px) {
-  .text-center{
+  #home{
     background-image: image-url('234266.jpg');
     background-position: right bottom;
     padding: 1rem;
@@ -327,7 +327,7 @@ a{
         font-size: 1rem;
       }
       .btn{
-        font-size: 1.25rem;
+        font-size: 1.2rem;
       }
     }
   }
