@@ -294,13 +294,19 @@ a{
     margin-right: 3.5rem;
 }
 
-.text-center{
+#home{
    background-image: image-url('234266.jpg');
    background-position: right bottom;
    background-size: cover;
    background-repeat: repeat;
    background-attachment: fixed;
    padding: 3rem;
+}
+.py-5{
+  background-image: image-url('234266.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 .bg-white{
