@@ -52,12 +52,12 @@
             </ul>
           </li>
           <li>
-            <a class="inline-block ml-3" id="search" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              <i class="fas fa-search"></i>
+            <a class="inline-block ml-3" id="search_form" data-toggle="collapse" href="#search" role="button" aria-expanded="false" aria-controls="search">
+              <i class="fas fa-search"></i>                               
             </a>
           </li>
           </ul>
-          <div class="collapse" id="collapseExample">
+          <div class="collapse" id="search">
             <%= search_form_for @q, url: topics_search_path, class:"form-inline" do |f| %>
              <div class="form-inline">
                 <%= f.select :years_id_eq, options_from_collection_for_select(Year.all, :id, :year_number ), include_blank: "学年から探す", class:"form-control mb-0 mr-2" %>
