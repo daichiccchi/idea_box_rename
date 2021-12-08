@@ -306,6 +306,18 @@ a{
 .bg-white{
   padding: 3rem;
 }
+.theme{
+  padding: 3rem;
+  opacity: 0;
+  /*要素を左に100pxずらしたところに配置する*/
+  transform:translateX(-100px);
+  /*透過度と表示位置を1秒かけて変化させる*/
+  transition:opacity 1s,transform 4s;
+}
+.bg-white-after{
+  opacity: 1;
+  transform:translate(0);
+}
 
 @media only screen and (max-width:599px) {
   #home{
