@@ -1,42 +1,25 @@
-# Ruby on Rails チュートリアルのサンプルアプリケーション
+# IDEA BOX
 
-これは、次の教材で作られたサンプルアプリケーションです。
-[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-（第6版）
-[Michael Hartl](https://www.michaelhartl.com/) 著
+本アプリは、学校現場の先生方が日々の授業実践や教室環境に関するアイデアを投稿し、共有することができる教員向けSNSサイトです。
+レスポンシブ対応しており、スマホからでも閲覧可能です。
+![56559fcad9b98558766184be4d897bd3](https://user-images.githubusercontent.com/87594110/144520383-2c0be871-cabe-4778-b580-119cb333a31c.jpg)
 
-## ライセンス
+## 使用技術
+Ruby 2.6.3<br>
+Ruby on Rails 6.0.4.1<br>
 
-[Ruby on Rails チュートリアル](https://railstutorial.jp/)内にある
-ソースコードはMITライセンスとBeerwareライセンスのもとで公開されています。
-詳細は [LICENSE.md](LICENSE.md) をご覧ください。
-
-## 使い方
-
-このアプリケーションを動かす場合は、まずはリポジトリを手元にクローンしてください。
-その後、次のコマンドで必要になる RubyGems をインストールします。
-
-```
-$ bundle install --without production
-```
-
-その後、データベースへのマイグレーションを実行します。
-
-```
-$ rails db:migrate
-```
-
-最後に、テストを実行してうまく動いているかどうか確認してください。
-
-```
-$ rails test
-```
-
-テストが無事に通ったら、Railsサーバーを立ち上げる準備が整っているはずです。
-
-```
-$ rails server
-```
-
-詳しくは、[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-を参考にしてください。
+## 機能一覧
+・ログイン機能<br>
+・ユーザー登録機能<br>
+・メールによるアカウント有効化機能<br>
+・パスワード変更機能<br>
+・写真（動画）の投稿機能<br>
+・ワード、エクセル形式のファイル投稿機能<br>
+・いいね機能(Ajax)<br>
+・コメント機能(Ajax)<br>
+・保存機能(Ajax)<br>
+  →マイフォルダへ保存<br>
+・タグ付け機能（教科・学年）<br>
+・学年別絞り込み機能<br>
+・教科別絞り込み機能<br>
+・フリーワードによる検索機能<br>
