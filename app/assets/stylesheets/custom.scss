@@ -324,22 +324,21 @@ a{
     background-image: image-url('234266.jpg');
     background-position: right bottom;
     padding: 1rem;
-    .bg-white{
-      padding: 1rem;
-      h1{
+  }
+     h1{
         font-size: 1.8rem;
       }
+    .bg-white{
+      padding: 1rem;
       p{
         font-size: 1rem;
       }
       .btn{
         font-size: 1rem;
       }
-    }
+    
   }
-  .form-control{
-    width: auto;
-  }
+  
   .search{
     display: none;
   }
